@@ -237,7 +237,7 @@ ReceiveLogistics()
 			if Found2 >= 1
 			{
 				GuiControl,, NB, Logistics Received
-				ClickS(Safex, Safey)
+				ClickS(740, 500)
 				RSleep()
 				RFindClick("LogisticsConfirm", "rNoxPlayer mc o5 w30000,50")
 				ReceiveLogistics()
@@ -372,7 +372,7 @@ Sortie:
 		}
 		else
 		{
-			ClickS(Safex, Safey)
+			ClickS(740, 500)
 			GuiControl,, NB, Post-Combat
 			RSleep()
 		}
