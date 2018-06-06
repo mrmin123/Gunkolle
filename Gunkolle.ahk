@@ -118,6 +118,7 @@ RFindClick(x,y)
 	Random, RandY, -10, 10
 	GuiControl,, NB, %x%
 	FindClick(A_ScriptDir "\pics\" x,y "Center x"RandX " y"RandY)
+	RSleep()
 	return
 }
 
@@ -218,7 +219,7 @@ RSleep(time:=600)
 ReceiveLogistics()
 {
 	; Check expedition
-	RSleep(2000)
+	RSleep(2500)
 	GuiControl,, NB, Checking Logistics
 	Found := 0
 	while(Found == 0)
@@ -236,10 +237,9 @@ ReceiveLogistics()
 			if Found2 >= 1
 			{
 				GuiControl,, NB, Logistics Received
-				ClickS(Expeditionx,Expeditiony)
+				ClickS(Safex, Safey)
 				RSleep()
 				RFindClick("LogisticsConfirm", "rNoxPlayer mc o5 w30000,50")
-				RSleep()
 				ReceiveLogistics()
 			}
 		}
@@ -256,6 +256,7 @@ Sortie:
 	TR := 0
 	GuiControl, Hide, SSB
 	CheckWindow()
+	ReceiveLogistics()
 	if SortieInterval != -1
 	{
 		SetTimer, Delay, %SortieInterval%
@@ -311,11 +312,8 @@ Sortie:
 	ReceiveLogistics()
 
 	RFindClick("Combat", "rNoxPlayer mc w30000,50")
-	RSleep()
 	RFindClick("Emergency", "rNoxPlayer mc o5 w30000,50")
-	RSleep()
 	RFindClick("4_3e", "rNoxPlayer mc o5 w30000,50")
-	RSleep()
 	RFindClick("battle", "rNoxPlayer mc o5 w30000,50")
 	RSleep(3000)
 	Found := FindClick(A_ScriptDir "\pics\Heliport", "rNoxPlayer mc o5 Count1 n0 w5000,50")
@@ -329,31 +327,22 @@ Sortie:
 		Pause
 	}
 	RFindClick("Heliport", "rNoxPlayer mc o5 w30000,50")
-	RSleep()
 	RFindClick("Battleok", "rNoxPlayer mc o5 w30000,50")
-	RSleep()
 	RFindClick("CommandPost", "rNoxPlayer mc o5 w30000,50")
-	RSleep()
 	RFindClick("Battleok", "rNoxPlayer mc o5 w30000,50")
-	RSleep()
 	RFindClick("StartCombat", "rNoxPlayer mc o5 w30000,50")
 	RSleep(4500)
 	RFindClick("4_3eHeliResupply", "rNoxPlayer mc o5 w30000,50")
-	RSleep()
 	RFindClick("Planning", "rNoxPlayer mc o5 w30000,50")
-	RSleep()
 	RFindClick("4_3eEnemy1", "rNoxPlayer mc o30 w30000,50")
-	RSleep()
 	RFindClick("4_3eEnemy2", "rNoxPlayer mc o15 w30000,50")
 	RSleep()
 	ControlSend, , a, Nox
-	RSleep(300)
+	RSleep()
 	ControlSend, , a, Nox
 	RSleep()
 	RFindClick("4_3eEnemy3", "rNoxPlayer mc o10 w30000,50")
-	RSleep()
 	RFindClick("4_3eEnemy4", "rNoxPlayer mc o25 w30000,50")
-	RSleep()
 	RFindClick("execute", "rNoxPlayer mc o5 w30000,50")
 
 	Found := 0
@@ -372,7 +361,7 @@ Sortie:
 		}
 	}
 	RFindClick("EndTurn", "rNoxPlayer mc o5 w30000,50")
-	RSleep(4000)
+	RSleep(4500)
 	Found := 0
 	while(Found == 0)
 	{
@@ -416,7 +405,7 @@ Sortie:
 	{
 		RFindClick("Factory", "rNoxPlayer mc o40 w30000,50")
 		RFindClick("Retirement", "rNoxPlayer mc o5 w30000,50")
-		loop, 2
+		loop, 1
 		{
 			sleep 500
 			RFindClick("TdollRetirementSelect", "rNoxPlayer mc oTransN,40 w30000,50")
