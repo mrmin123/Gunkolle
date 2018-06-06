@@ -401,7 +401,7 @@ Sortie:
 	ti := RetirementCounter
 	RetirementCounter += 1
 
-	if(RetirementCounter == 5)
+	if(RetirementCounter == 50)
 	{
 		RFindClick("Factory", "rNoxPlayer mc o40 w30000,50")
 		RFindClick("Retirement", "rNoxPlayer mc o5 w30000,50")
